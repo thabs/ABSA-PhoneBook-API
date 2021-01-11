@@ -1,9 +1,12 @@
+using System.Diagnostics.CodeAnalysis;
+
 namespace ABSA.PhoneBookAPI.Models
 {
     /// <summary>
-    ///     Represents one the contact details.
+    ///     Represents the contact request.
     /// </summary>
-    public class Contact
+    [ExcludeFromCodeCoverage]
+    public class ContactRequest
     {
         /// <summary>
         ///     Gets or sets a <see cref="string"/> representing the title.
