@@ -10,7 +10,7 @@ namespace ABSA.PhoneBookAPI.Validators
         /// </summary>
         public ContactSearchRequestValidator()
         {
-            RuleFor(x => x.Email).NotEmpty(); 
+            RuleFor(x => x.Email).NotEmpty().EmailAddress();
         }
     }
 }

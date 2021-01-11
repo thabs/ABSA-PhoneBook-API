@@ -30,4 +30,4 @@ The ABSA PhoneBook API repository URL is: https://github.com/thabs/ABSA-PhoneBoo
 
 ## ASP.NET Core
 
-The project is developed, build, run, and published using [.Net CLI](https://docs.microsoft.com/en-us/dotnet/core/tools/) published by Microsoft.
+The project is developed, build, run, and published using [.Net CLI](https://docs.microsoft.com/en-us/dotnet/core/tools/) published by Microsoft. The swagger documentation can be assessed here [PhoneBook Swagger](https://localhost:5001/phonebook/swagger/index.html) after running command 'docker run' on local machine.

@@ -12,8 +12,8 @@ namespace ABSA.PhoneBookAPI.Validators
         {
             RuleFor(x => x.FirstName).NotEmpty();
             RuleFor(x => x.LastName).NotEmpty();
-            RuleFor(x => x.Email).NotEmpty();
-            RuleFor(x => x.MobileNumber).NotEmpty(); 
+            RuleFor(x => x.Email).NotEmpty().EmailAddress();
+            RuleFor(x => x.MobileNumber).NotEmpty().Matches("^[0-9]*$").WithMessage("Must contain only numbers"); 
         }
     }
 }
