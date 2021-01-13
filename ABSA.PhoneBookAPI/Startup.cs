@@ -1,4 +1,7 @@
-using ABSA.PhoneBookAPI.Models;
+using ABSA.PhoneBookAPI.Data.Models;
+using ABSA.PhoneBookAPI.Data.Repositories;
+using ABSA.PhoneBookAPI.Services;
+using ABSA.PhoneBookAPI.Models.Request;
 using ABSA.PhoneBookAPI.Validators;
 using FluentValidation;
 using FluentValidation.AspNetCore;
@@ -8,6 +11,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.EntityFrameworkCore;
 using NSwag;
 using NSwag.AspNetCore;
 
@@ -71,6 +75,18 @@ namespace ABSA.PhoneBookAPI
 
             services.AddTransient<IValidator<ContactRequest>, ContactRequestValidator>();
             services.AddTransient<IValidator<ContactSearchRequest>, ContactSearchRequestValidator>();
+            #endregion
+
+            #region Database and Repositories
+            
+            // DB
+            string connectionString = Configuration.GetConnectionString("default");
+            services.AddDbContext<PhoneBookContext>(c => c.UseNpgsql(connectionString));
+            // Repository
+            services.AddTransient(typeof(IRepository<>), typeof(Repository<>));
+            services.AddTransient<IContactRepository, ContactRepository>();
+            // Services
+            services.AddTransient<IContactService, ContactService>();
             #endregion
 
             #region Swagger / Open API

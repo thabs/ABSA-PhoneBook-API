@@ -1,11 +1,11 @@
-using ABSA.PhoneBookAPI.Models;
+using ABSA.PhoneBookAPI.Models.Request;
 using ABSA.PhoneBookAPI.Validators;
 using Xunit;
 
 namespace ABSA.PhoneBookAPI.Test.Validators
 {
     /// <summary>
-    ///     Provides tests for <see cref="ContactRequestValidator"/>.
+    ///     Provides tests for <see cref="ContactRequestValidator" />.
     /// </summary>
     public class ContactRequestValidatorTest
     {

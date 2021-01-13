@@ -1,11 +1,8 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
+using ABSA.PhoneBookAPI.Data;
+using ABSA.PhoneBookAPI.Data.Models;
 
 namespace ABSA.PhoneBookAPI
 {
@@ -13,7 +10,9 @@ namespace ABSA.PhoneBookAPI
     {
         public static void Main(string[] args)
         {
-            CreateHostBuilder(args).Build().Run();
+            var host = CreateHostBuilder(args).Build();
+            CreateDbIfNotExists(host);
+            host.Run();
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
@@ -22,5 +21,19 @@ namespace ABSA.PhoneBookAPI
                 {
                     webBuilder.UseStartup<Startup>();
                 });
+
+        /// <summary>
+        ///     Initializes the database schema.
+        /// </summary>
+        /// <param name="host">
+        ///     An <see cref="IHost" /> program abstraction.
+        /// </param>        
+        private static void CreateDbIfNotExists(IHost host)
+        {
+            using var scope = host.Services.CreateScope();
+            var services = scope.ServiceProvider;
+            var context = services.GetRequiredService<PhoneBookContext>();
+            DbInitializer.Initialize(context);
+        }
     }
 }
