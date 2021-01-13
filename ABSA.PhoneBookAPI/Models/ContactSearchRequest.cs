@@ -1,6 +1,6 @@
 using System.Diagnostics.CodeAnalysis;
 
-namespace ABSA.PhoneBookAPI.Models.Request
+namespace ABSA.PhoneBookAPI.Models
 {
     /// <summary>
     ///     Represents the contact search request.

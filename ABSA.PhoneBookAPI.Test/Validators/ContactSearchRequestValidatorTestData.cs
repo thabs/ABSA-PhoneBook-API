@@ -1,4 +1,4 @@
-using ABSA.PhoneBookAPI.Models.Request;
+using ABSA.PhoneBookAPI.Models;
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;

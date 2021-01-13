@@ -1,7 +1,7 @@
 using ABSA.PhoneBookAPI.Data.Models;
 using ABSA.PhoneBookAPI.Data.Repositories;
 using ABSA.PhoneBookAPI.Services;
-using ABSA.PhoneBookAPI.Models.Request;
+using ABSA.PhoneBookAPI.Models;
 using ABSA.PhoneBookAPI.Validators;
 using FluentValidation;
 using FluentValidation.AspNetCore;

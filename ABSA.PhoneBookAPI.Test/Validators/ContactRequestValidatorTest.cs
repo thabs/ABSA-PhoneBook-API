@@ -1,4 +1,4 @@
-using ABSA.PhoneBookAPI.Models.Request;
+using ABSA.PhoneBookAPI.Models;
 using ABSA.PhoneBookAPI.Validators;
 using Xunit;
 

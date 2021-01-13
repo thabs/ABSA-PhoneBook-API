@@ -3,10 +3,10 @@ using System.Diagnostics.CodeAnalysis;
 namespace ABSA.PhoneBookAPI.Models
 {
     /// <summary>
-    ///     Represents the contact model.
+    ///     Represents the contact request.
     /// </summary>
     [ExcludeFromCodeCoverage]
-    public abstract class Contact
+    public class ContactRequest
     {
         /// <summary>
         ///     Gets or sets a <see cref="string"/> representing the title.

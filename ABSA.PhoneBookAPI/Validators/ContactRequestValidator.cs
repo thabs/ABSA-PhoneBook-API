@@ -1,4 +1,4 @@
-using ABSA.PhoneBookAPI.Models.Request;
+using ABSA.PhoneBookAPI.Models;
 using FluentValidation;
 
 namespace ABSA.PhoneBookAPI.Validators
