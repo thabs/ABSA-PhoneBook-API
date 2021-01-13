@@ -14,35 +14,40 @@ namespace ABSA.PhoneBookAPI.Data.Models
       public virtual DbSet<Contact> Contacts { get; set; }
         
       public PhoneBookContext(DbContextOptions<PhoneBookContext> options) : base(options)
-      {    
+      { 
+
       }
 
       protected override void OnModelCreating(ModelBuilder modelBuilder)
       {
-        modelBuilder.Entity<Contact>(entity =>
-        {
-          entity.Property(e => e.Title)
-                .HasMaxLength(50);
+            modelBuilder.Entity<Contact>()
+                  .HasIndex(c => new {c.Email, c.MobileNumber})
+                  .IsUnique();
+            
+            modelBuilder.Entity<Contact>(entity =>
+            {
+                  entity.Property(e => e.Title)
+                        .HasMaxLength(50);
 
-          entity.Property(e => e.FirstName)
-                .IsRequired()
-                .HasMaxLength(50);
+                  entity.Property(e => e.FirstName)
+                        .IsRequired()
+                        .HasMaxLength(50);
 
-          entity.Property(e => e.LastName)
-                .IsRequired()
-                .HasMaxLength(50);
+                  entity.Property(e => e.LastName)
+                        .IsRequired()
+                        .HasMaxLength(50);
 
-          entity.Property(e => e.Email)
-                .IsRequired()
-                .HasMaxLength(255);
+                  entity.Property(e => e.Email)
+                        .IsRequired()
+                        .HasMaxLength(255);
+            
+                  entity.Property(e => e.MobileNumber)
+                        .IsRequired()
+                        .HasMaxLength(50);
 
-          entity.Property(e => e.MobileNumber)
-                .IsRequired()
-                .HasMaxLength(50);
-
-          entity.Property(e => e.DateTimeCreated)
-                .IsRequired();
-          });
+                  entity.Property(e => e.DateTimeCreated)
+                        .IsRequired();
+            });
         }
     }
 }
