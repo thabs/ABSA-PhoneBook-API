@@ -45,7 +45,7 @@ namespace ABSA.PhoneBookAPI.Controllers
                 LastName = request.LastName,
                 Email = request.Email,
                 MobileNumber = request.MobileNumber,
-                DateTimeCreated =  new DateTime()
+                DateTimeCreated =  DateTime.Now
             };
 
             return await _contactService.AddContactAsync(contact);
