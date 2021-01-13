@@ -80,7 +80,7 @@ namespace ABSA.PhoneBookAPI
             #region Database and Repositories
             
             // DB
-            string connectionString = Configuration.GetConnectionString("default");
+            string connectionString = Configuration.GetConnectionString("DefaultConnection");
             services.AddDbContext<PhoneBookContext>(c => c.UseNpgsql(connectionString));
             // Repository
             services.AddTransient(typeof(IRepository<>), typeof(Repository<>));
