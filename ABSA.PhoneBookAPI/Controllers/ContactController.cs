@@ -88,7 +88,7 @@ namespace ABSA.PhoneBookAPI.Controllers
                 LastName = request.LastName,
                 Email = request.Email,
                 MobileNumber = request.MobileNumber,
-                DateTimeUpdated =  DateTime.Now
+                DateTimeCreated =  DateTime.Now
             };
 
             return await _contactService.UpdateContactAsync(contact);

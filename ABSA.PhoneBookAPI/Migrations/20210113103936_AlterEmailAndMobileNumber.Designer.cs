@@ -31,9 +31,6 @@ namespace ABSA.PhoneBookAPI.Migrations
                     b.Property<DateTime>("DateTimeCreated")
                         .HasColumnType("timestamp without time zone");
 
-                    b.Property<DateTime?>("DateTimeUpdated")
-                        .HasColumnType("timestamp without time zone");
-
                     b.Property<string>("Email")
                         .IsRequired()
                         .HasColumnType("character varying(255)")

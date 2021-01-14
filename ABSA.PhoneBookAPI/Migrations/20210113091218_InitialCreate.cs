@@ -19,8 +19,7 @@ namespace ABSA.PhoneBookAPI.Migrations
                     LastName = table.Column<string>(maxLength: 50, nullable: false),
                     Email = table.Column<string>(maxLength: 255, nullable: false),
                     MobileNumber = table.Column<string>(maxLength: 50, nullable: false),
-                    DateTimeCreated = table.Column<DateTime>(nullable: false),
-                    DateTimeUpdated = table.Column<DateTime>(nullable: true)
+                    DateTimeCreated = table.Column<DateTime>(nullable: false)
                 },
                 constraints: table =>
                 {

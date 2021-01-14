@@ -1,5 +1,4 @@
 using System;
-using System.ComponentModel.DataAnnotations;
 using System.Diagnostics.CodeAnalysis;
 
 namespace ABSA.PhoneBookAPI.Data.Models
@@ -44,10 +43,5 @@ namespace ABSA.PhoneBookAPI.Data.Models
         ///     Get or set a <see cref="DateTime"/> representing the date and time logged for when the contact was created.
         /// </summary>
         public DateTime DateTimeCreated { get; set; }
-        
-        /// <summary>
-        ///     Get or set a <see cref="DateTime"/> representing the date and time logged for when the contact was updated.
-        /// </summary>
-        public DateTime? DateTimeUpdated { get; set; }
     }
 }
