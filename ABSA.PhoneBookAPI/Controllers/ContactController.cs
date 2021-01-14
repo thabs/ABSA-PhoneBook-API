@@ -4,8 +4,8 @@ using System.Collections.Generic;
 using ABSA.PhoneBookAPI.Models;
 using ABSA.PhoneBookAPI.Data.Models;
 using ABSA.PhoneBookAPI.Services;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Http;
 
 namespace ABSA.PhoneBookAPI.Controllers
 {
@@ -30,9 +30,11 @@ namespace ABSA.PhoneBookAPI.Controllers
         ///     A <see cref="List{Contact}" /> representing the list of contacts.
         /// </returns>
         [HttpGet("all")]
-        public async Task<ActionResult<List<Contact>>> GetAllContacts()
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(List<Contact>))]
+        public async Task<IActionResult> GetAllContacts()
         {
-            return await _contactService.GetAllContactsAsync();
+            var result = await _contactService.GetAllContactsAsync();
+            return Ok(result);
         }
 
         /// <summary>
@@ -45,8 +47,8 @@ namespace ABSA.PhoneBookAPI.Controllers
         ///     A <see cref="Contact" /> representing the new created contact.
         /// </returns>
         [HttpPost("create")]
-        //[ProducesResponseType(StatusCodes.Status200OK, Type = typeof(Contact))]
-        public async Task<ActionResult<Contact>> CreateContact(
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(Contact))]
+        public async Task<IActionResult> CreateContact(
             [FromBody] ContactRequest request)
         {
             var contact = new Contact
@@ -59,7 +61,8 @@ namespace ABSA.PhoneBookAPI.Controllers
                 DateTimeCreated =  DateTime.Now
             };
 
-            return await _contactService.AddContactAsync(contact);
+            var result = await _contactService.AddContactAsync(contact);
+            return Ok(result);
         }
 
         /// <summary>
@@ -72,7 +75,8 @@ namespace ABSA.PhoneBookAPI.Controllers
         ///     A <see cref="Contact" /> representing the updated contact.
         /// </returns>
         [HttpPut("update")]
-        public async Task<ActionResult<Contact>> UpdateContact([FromQuery] int? id,
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(Contact))]
+        public async Task<IActionResult> UpdateContact([FromQuery] int? id,
             [FromBody] ContactRequest request)
         {
             if(id == null)
@@ -91,7 +95,8 @@ namespace ABSA.PhoneBookAPI.Controllers
                 DateTimeCreated =  DateTime.Now
             };
 
-            return await _contactService.UpdateContactAsync(contact);
+            var result = await _contactService.UpdateContactAsync(contact);
+            return Ok(result);
         }
 
         /// <summary>
@@ -104,7 +109,8 @@ namespace ABSA.PhoneBookAPI.Controllers
         ///     A <see cref="Contact" /> representing the deleted contact.
         /// </returns>
         [HttpPost("delete")]
-        public async Task<ActionResult<Contact>> DeleteContact(
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(Contact))]
+        public async Task<IActionResult> DeleteContact(
             [FromQuery] int? id)
         {
             if(id == null)
@@ -112,7 +118,8 @@ namespace ABSA.PhoneBookAPI.Controllers
                 return NotFound();
             }
 
-            return await _contactService.DeleteContactByIdAsync(id.GetValueOrDefault());
+            var result = await _contactService.DeleteContactByIdAsync(id.GetValueOrDefault());
+            return Ok(result);
         }
     }
 }
